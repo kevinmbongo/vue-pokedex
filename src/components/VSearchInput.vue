@@ -12,6 +12,8 @@
         name="name"
         required
         size="70"
+        :value="value"
+        @input="handleInput"
       />
     </div>
   </div>
@@ -20,7 +22,18 @@
 <script>
 export default {
   name: 'VSearchInput',
+
+  props: {
+    value: {
+      type: String,
+      required: true,
+    },
+  },
+
+  methods: {
+    handleInput(e) {
+      this.$emit('input', e.target.value)
+    },
+  },
 }
 </script>
-
-<style scoped></style>
