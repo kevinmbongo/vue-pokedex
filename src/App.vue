@@ -1,5 +1,5 @@
 <template>
-  <main id="app">
+  <main id="app" class="relative">
     <section class="max-w-xl mx-auto grid gap-10">
       <header class="flex justify-center items-center pt-20">
         <v-search-input v-model="searchFilter" />
@@ -14,13 +14,9 @@
         :image="pokemon.sprites.front_default"
       />
     </section>
-    <button class="border bg-red" @click="handlePrevPage">
-      <span>Prev</span>
-    </button>
 
-    <button class="border" @click="handleNextPage">
-      <span>next</span>
-    </button>
+    <v-button text="Next >>" side="right-5" @click="handleNextPage" />
+    <v-button text="<< Previous " side="left-5" @click="handlePrevPage" />
   </main>
 </template>
 
@@ -28,11 +24,12 @@
 import VSearchInput from '@/components/VSearchInput'
 import VCardPoke from '@/components/VCardPoke'
 import { getPokemon, getPokemons } from '@/api/poke-api'
+import VButton from '@/components/VButton'
 
 export default {
   name: 'App',
 
-  components: { VCardPoke, VSearchInput },
+  components: { VButton, VCardPoke, VSearchInput },
 
   data: () => ({
     searchFilter: '',
@@ -64,7 +61,6 @@ export default {
 
     async getPokemons(paginationUrl = null) {
       try {
-
         const { data } = await getPokemons(paginationUrl)
 
         this.nextPage = data.next
