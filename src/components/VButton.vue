@@ -1,5 +1,5 @@
 <template>
-  <button :class="side">
+  <button :class="side" @click="click">
     <span>{{ text }}</span>
   </button>
 </template>
@@ -18,16 +18,17 @@ export default {
       type: String,
       required: true,
     },
+
+    click: {
+      type: Function,
+      required: true,
+    },
   },
 }
 </script>
 
 <style scoped>
 button {
-  @apply border  rounded-3xl py-8 px-16 absolute fixed  top-52 text-2xl bg-blue-800 text-white;
-}
-
-img {
-  @apply mx-5;
+  @apply border  rounded-3xl py-8 px-16 fixed  top-52 text-2xl bg-blue-800 text-white;
 }
 </style>

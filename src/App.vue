@@ -14,9 +14,8 @@
         :image="pokemon.sprites.front_default"
       />
     </section>
-
-    <v-button text="Next >>" side="right-5" @click="handleNextPage" />
-    <v-button text="<< Previous " side="left-5" @click="handlePrevPage" />
+    <v-button text="Next >>" side="right-5" :click="handleNextPage" />
+    <v-button text="<< Previous " side="left-5" :click="handlePrevPage" />
   </main>
 </template>
 
